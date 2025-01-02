@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MyDockerProject.Models.User>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Kullanıcılar</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Kullanıcı Adı</th>
+            <th>E-posta</th>
+            <th>Doğum Tarihi</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.DateOfBirth.ToShortDateString()</td>
+            <td>
+                <a href="@Url.Action("Edit", "Home", new { id = user.Id })" class="btn btn-warning">Düzenle</a>
+                <a href="@Url.Action("Delete", "Home", new { id = user.Id })" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<p>
+    <a href="@Url.Action("Create", "Home")" class="btn btn-primary">Yeni Kullanıcı Ekle</a>
+</p>
+
+

@@ -1,0 +1,30 @@
+services:
+  MyDockerProjectDB:
+    container_name: mydockerprojectdb
+    image: mcr.microsoft.com/mssql/server
+    ports:
+    - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Passw@rd123.
+    networks:
+    - mydockerprojectnet
+
+  mydockerproject:
+    container_name: mydockerproject
+    image: mydockerproject
+    build:
+      context: .
+      dockerfile: MyDockerProject/Dockerfile
+    ports:
+    - 8001:8081
+    environment:
+     - MSSQL_SA_PASSWORD=Passw@rd123.
+    networks:
+    - mydockerprojectnet
+    depends_on:
+    - MyDockerProjectDB
+
+networks:
+  mydockerprojectnet:
+    driver: bridge

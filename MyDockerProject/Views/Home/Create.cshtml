@@ -1,0 +1,37 @@
+﻿@model MyDockerProject.Models.CreateViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yeni Kullanıcı Ekle</h2>
+<br />
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="FirstName">Ad</label>
+        <input type="text" class="form-control" asp-for="FirstName" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="LastName">Soyad</label>
+        <input type="text" class="form-control" asp-for="LastName" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="UserName">Kullanıcı Adı</label>
+        <input type="text" class="form-control" asp-for="UserName" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="Email">E-posta</label>
+        <input type="email" class="form-control" asp-for="Email" />
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="DateOfBirth">Doğum Tarihi</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth"/>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+
